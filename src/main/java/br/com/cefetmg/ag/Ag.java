@@ -146,7 +146,7 @@ public class Ag {
             return;
         }
 
-        System.out.println("\nGeracao " + geracao + " | Melhor: " + Arrays.toString(melhor.getGenes()) + " | Avaliacao: " + melhor.getAvaliacao());
+        System.out.println("Geracao " + geracao + " | Melhor: " + Arrays.toString(melhor.getGenes()) + " | Avaliacao: " + melhor.getAvaliacao());
     }
 
     private Comparator<Individuo> obterComparador(boolean isMaximizacao) {

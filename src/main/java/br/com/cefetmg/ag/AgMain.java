@@ -2,19 +2,23 @@ package br.com.cefetmg.ag;
 
 public class AgMain {
     public static void main(String[] args) throws Exception {
-        //! Dados para o problema das N rainhas
-        // IndNRainhasFactory factory = new IndNRainhasFactory(10);
-        // int numPopulacao = 4;
-        // int numElite = 1;
-        // int numGeracoes = 10000;
+        //* Dados para o problema das N rainhas
+        // int qtdGenes = 8;
         
-        //! Dados para o problema de otimização de Powell
-        int dimensao = 4; // deve ser múltiplo de 4
+        //* Dados para o problema de otimizacao de Powell
+        // int dimensao = 4; //! Deve ser múltiplo de 4
+        
+        //* Dados para o problema de otimizacao de Langermann
+        int dimensao = 2; //! Deve ser 2 para Langermann
+
+        // * Dados comuns
         int numPopulacao = 20;
         int numElite = 4;
         int numGeracoes = 2000;
 
-        PowellIndFactory factory = new PowellIndFactory(dimensao);
+        // IndNRainhasFactory factory = new IndNRainhasFactory(qtdGenes);
+        // PowellIndFactory factory = new PowellIndFactory(dimensao);
+        LangermannIndFactory factory = new LangermannIndFactory(dimensao);
         Ag algoritmoGenetico = new Ag();
         algoritmoGenetico.executar(factory, numPopulacao, numElite, numGeracoes);
     }
