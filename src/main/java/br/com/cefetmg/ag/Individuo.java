@@ -11,5 +11,5 @@ public interface Individuo {
 
     boolean isMaximizacao();
 
-    int[] getGenes();
+    double[] getGenes();
 }

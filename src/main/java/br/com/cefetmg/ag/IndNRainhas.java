@@ -6,20 +6,20 @@ import java.util.Random;
 
 public class IndNRainhas implements Individuo {
     private double txMutacao = 0.3;
-    private int[] genes;
+    private double[] genes;
     private int qtdGenes;
     private boolean maximizacao = false;
     private static final Random rd = new Random();
 
     public IndNRainhas(int qtdGenes) {
-        this.genes = new int[qtdGenes];
+        this.genes = new double[qtdGenes];
         for(int i =0; i < qtdGenes; i++) {
-            genes[i] = rd.nextInt(0,qtdGenes);
+            genes[i] = rd.nextInt(0, qtdGenes);
         }
         this.qtdGenes = qtdGenes;
     }
 
-    public IndNRainhas(int qtdGenes, int[] genes) {
+    public IndNRainhas(int qtdGenes, double[] genes) {
         this.qtdGenes = qtdGenes;
         this.genes = genes.clone();
     }
@@ -29,10 +29,10 @@ public class IndNRainhas implements Individuo {
         List<Individuo> filhos = new ArrayList<>(2);
         int corte = rd.nextInt(1, qtdGenes - 1);
 
-        int[] genesFilho1 = new int[qtdGenes];
-        int[] genesFilho2 = new int[qtdGenes];
+        double[] genesFilho1 = new double[qtdGenes];
+        double[] genesFilho2 = new double[qtdGenes];
 
-        int[] genesOutro = outro.getGenes();
+        double[] genesOutro = outro.getGenes();
 
         for (int i = 0; i < qtdGenes; i++) {
             if (i < corte) {
@@ -69,9 +69,11 @@ public class IndNRainhas implements Individuo {
 
         for (int i = 0; i < genes.length; i++) {
             for (int j = i + 1; j < genes.length; j++) {
-                if (genes[i] == genes[j]) {
+                int gi = (int) genes[i];
+                int gj = (int) genes[j];
+                if (gi == gj) {
                     colisoes++;
-                } else if (Math.abs(genes[i] - genes[j]) == Math.abs(i - j)) {
+                } else if (Math.abs(gi - gj) == Math.abs(i - j)) {
                     colisoes++;
                 }
             }
@@ -86,7 +88,7 @@ public class IndNRainhas implements Individuo {
     }
 
     @Override
-    public int[] getGenes() {
+    public double[] getGenes() {
         return genes.clone();
     }
 }
